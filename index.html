@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GG Luxe - Crafted by the Earth</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e2e2e2",
+                        "on-primary-fixed": "#241a00",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#e4e2e2",
+                        "background": "#121414",
+                        "surface-container-low": "#1a1c1c",
+                        "tertiary": "#cfcece",
+                        "surface-container-high": "#282a2b",
+                        "primary-container": "#d4af37",
+                        "on-secondary-fixed-variant": "#474746",
+                        "inverse-surface": "#e2e2e2",
+                        "surface-bright": "#38393a",
+                        "surface-tint": "#e9c349",
+                        "inverse-primary": "#735c00",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "surface-container-highest": "#333535",
+                        "outline-variant": "#4d4635",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-primary": "#3c2f00",
+                        "secondary-fixed": "#e5e2e1",
+                        "secondary-container": "#474746",
+                        "primary-fixed": "#ffe088",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-secondary": "#313030",
+                        "inverse-on-surface": "#2f3131",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-container": "#1e2020",
+                        "on-primary-fixed-variant": "#574500",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "secondary": "#c8c6c5",
+                        "on-tertiary-container": "#454545",
+                        "on-tertiary": "#303031",
+                        "outline": "#99907c",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-dim": "#121414",
+                        "primary": "#f2ca50",
+                        "on-primary-container": "#554300",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#b7b5b4",
+                        "on-background": "#e2e2e2",
+                        "surface-variant": "#333535",
+                        "surface": "#121414",
+                        "tertiary-container": "#b4b3b3",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0c0f0f",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "unit": "8px",
+                        "container-max": "1440px",
+                        "margin-desktop": "80px",
+                        "gutter": "32px",
+                        "section-gap": "160px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-xl-mobile": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["96px", { "lineHeight": "100px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.2em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "38px", "fontWeight": "500" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "display-xl-mobile": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #050505; color: #e2e2e2; }
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .light-leak {
+            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, rgba(5,5,5,0) 70%);
+        }
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .shimmer-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(45deg) translate(-50%, -50%);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: rotate(45deg) translate(-50%, -50%); }
+            100% { transform: rotate(45deg) translate(50%, 50%); }
+        }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Entrance Animations */
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Scroll Arrow Animation */
+        .scroll-arrow {
+            width: 40px;
+            height: 20px;
+            animation: custom-bounce 2s infinite;
+            opacity: 0.7;
+        }
+        @keyframes custom-bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/50 dark:bg-surface/50 backdrop-blur-[30px] border-b border-white/10 transition-all duration-500">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20">
+<button class="text-on-surface dark:text-on-surface hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center justify-center">
+                <svg viewBox="0 0 310 100" xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-10 w-auto">
+                    <path d="M 150 0 L 50 0 A 50 50 0 0 0 50 100 L 155 100 L 155 76 L 150 76 L 150 38 L 50 38 L 50 62 L 126 62 L 126 76 L 50 76 A 26 26 0 0 1 50 24 L 150 24 Z" fill="#ed1c24"/>
+                    <path d="M 160 0 L 260 0 A 50 50 0 0 1 260 100 L 155 100 L 155 76 L 160 76 L 160 38 L 260 38 L 260 62 L 184 62 L 184 76 L 260 76 A 26 26 0 0 0 260 24 L 160 24 Z" fill="#be1e2d"/>
+                </svg>
+            </div>
+<button class="text-on-surface dark:text-on-surface hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<main>
+<!-- Scroll Animation Section -->
+<section class="scroll-animation-section relative" style="height: 400vh; z-index: 40; margin-bottom: -7vh;">
+    <div class="canvas-container sticky top-0 w-full flex justify-center items-center bg-[#050505] h-[106vh]" style="mask-image: url(&quot;data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 0 0 L 100 0 L 100 94 L 85 94 C 82 94, 82 100, 80 100 L 20 100 C 18 100, 18 94, 15 94 L 0 94 Z' fill='black'/%3E%3C/svg%3E&quot;); mask-size: 100% 100%; -webkit-mask-image: url(&quot;data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 0 0 L 100 0 L 100 94 L 85 94 C 82 94, 82 100, 80 100 L 20 100 C 18 100, 18 94, 15 94 L 0 94 Z' fill='black'/%3E%3C/svg%3E&quot;); -webkit-mask-size: 100% 100%;">
+        <canvas id="scroll-animation" class="w-full h-full object-cover"></canvas>
+        
+        <div class="scroll-indicator absolute bottom-[calc(6vh+3rem)] flex flex-col items-center gap-3 text-[rgba(255,255,255,0.7)] text-[12px] uppercase text-center pointer-events-none transition-opacity duration-300 z-20" style="font-family: 'Inter', sans-serif; letter-spacing: 6px; font-weight: 300;">
+            <span>SCROLL TO EXPERIENCE</span>
+            <svg class="scroll-arrow" viewBox="0 0 40 20" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2 2 20 18 38 2"></polyline>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<!-- 1. Hero -->
+<section class="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden">
+<!-- STITCH_SHADER_START:ANIMATION_11 class="absolute inset-0 w-full h-full z-0 opacity-80" -->
+<div class="absolute inset-0 w-full h-full z-0 opacity-80" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_11" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_11');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create a cinematic sunrise gradient (Deep black to subtle gold/orange)
+    vec3 skyColor = vec3(0.02, 0.02, 0.03); // Deep Night Black
+    vec3 horizonColor = vec3(0.83, 0.68, 0.21); // Premium Gold
+    
+    // Fog and atmospheric haze
+    float fog = smoothstep(0.0, 1.0, uv.y + sin(uv.x * 3.0 + u_time * 0.5) * 0.05);
+    vec3 color = mix(skyColor, horizonColor * 0.4, fog);
+    
+    // Subtle light rays
+    float rays = pow(max(0.0, 1.0 - abs(uv.x - 0.5)), 10.0) * (0.5 + 0.5 * sin(u_time * 0.2));
+    color += horizonColor * rays * 0.1;
+    
+    // Add grain/texture
+    float noise = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+    color += noise * 0.02;
+
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_11 -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background z-10"></div>
+<div class="relative z-20 text-center px-margin-mobile fade-up">
+<h1 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-primary-container mb-6 drop-shadow-2xl">
+                    CRAFTED BY<br/>THE EARTH
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto mb-10">
+                    A curated collection of nature's most exclusive stone, polished to absolute perfection.
+                </p>
+<button class="shimmer-btn bg-primary-container text-on-primary-container font-label-caps text-label-caps px-8 py-4 rounded-none uppercase tracking-[0.2em] hover:bg-primary transition-colors">
+                    Explore Collection
+                </button>
+</div>
+</section>
+<!-- 2. Collection -->
+<section class="py-section-gap bg-background relative overflow-hidden">
+<div class="absolute inset-0 light-leak"></div>
+<div class="px-margin-mobile md:px-margin-desktop mb-12 fade-up">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">The Quarry</h2>
+<div class="w-12 h-px bg-primary-container"></div>
+</div>
+<div class="flex overflow-x-auto scroll-hide gap-8 px-margin-mobile md:px-margin-desktop pb-8 fade-up" style="scroll-snap-type: x mandatory;">
+<!-- Card 1 -->
+<div class="min-w-[85vw] md:min-w-[400px] shrink-0 relative group cursor-pointer" style="scroll-snap-align: start;">
+<div class="aspect-[0.6] overflow-hidden relative">
+<img alt="Pink Paradise Granite" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIEeh365nyj3H0p2ZqZ7NbGRDgNUo9zmjWLwPbS4mvAkudalFwVwUpv5RJ8NQiRN01jhWoO2a9BDxf38dOBYM7MDNZP2nxXV_-Do4YFb5mMuj55ZG4xW7d9LrPERCGUOMOXshSMSthWsDGEhCc3KPo4G9N-v8HWhxjMEKBLbdxWothfpE4OMEWk9KkxNCl3vk8ykkWUxD2Rf9fWdJQQisliBFFDCGcfX01LqwpTxg-XEXlpNpZGIOEJ-5wPydMVv_CfRr6kP0oO-aF"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80"></div>
+<div class="absolute inset-0 border border-white/5 m-4 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Pink Paradise</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                Exotic texture with deep pink and black veins, reflecting nature's raw intensity.
+                            </p>
+<div class="h-0.5 w-full bg-surface-variant relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary-container w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[85vw] md:min-w-[400px] shrink-0 relative group cursor-pointer" style="scroll-snap-align: start;">
+<div class="aspect-[0.6] overflow-hidden relative">
+<img alt="Kuppam Green Granite" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIuNWdEd2VBazaioWAjtmcTMDn0W2Ymvsj9egjeVyEMhEFlBVsPJMytUtH6-YqlNJoG6kYn6UnYJvw5fvJesnQ1aODCogmJroEj39Kq8Dnt8uHg-ZFsFbTgyGKK6ZGE9jEOBotOYuGc0hU1stIt8jat6EYBI5hpp4gKkoIG9UOSK5BOS4fkPEA_SfP6yDPcOTyTIVfpB7V5nedBcmF8o-x9OoMnxC9wkhXVQyOi_7M72dBeAGeqDi3RVRHzDLA3f9Mzlbw1OqYiNCD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80"></div>
+<div class="absolute inset-0 border border-white/5 m-4 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Kuppam Green</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                Elegant forest green interspersed with crystalline structures of white and grey.
+                            </p>
+<div class="h-0.5 w-full bg-surface-variant relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary-container w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Timeline -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative">
+<div class="text-center mb-20 fade-up">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">From Mountain to Masterpiece</h2>
+<div class="w-12 h-px bg-primary-container mx-auto"></div>
+</div>
+<div class="relative max-w-lg mx-auto">
+<div class="absolute left-[23px] top-0 bottom-0 w-px bg-surface-variant z-0"></div>
+<div class="space-y-16 relative z-10">
+<!-- Step 1 -->
+<div class="flex gap-8 fade-up">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-primary-container/30 flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-primary-container text-sm">landscape</span>
+</div>
+<div class="glass-panel p-6 w-full">
+<h4 class="font-label-caps text-label-caps text-primary-container mb-2">01 / Extraction</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Sourced responsibly from the most secluded quarries worldwide.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-8 fade-up">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-primary-container/30 flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-primary-container text-sm">cut</span>
+</div>
+<div class="glass-panel p-6 w-full">
+<h4 class="font-label-caps text-label-caps text-primary-container mb-2">02 / Precision Cut</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Diamond-tipped technology ensures flawless geometric purity.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-8 fade-up">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shrink-0 z-10 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+<span class="material-symbols-outlined text-on-primary-container text-sm">diamond</span>
+</div>
+<div class="glass-panel p-6 w-full border-primary-container/20">
+<h4 class="font-label-caps text-label-caps text-primary-container mb-2">03 / Polish</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Hand-finished to achieve a mirror-like depth that captures the light.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Project Showcase -->
+<section class="py-section-gap bg-background">
+<div class="px-margin-mobile md:px-margin-desktop mb-12 text-right fade-up">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Architectural Bespoke</h2>
+<div class="w-12 h-px bg-primary-container ml-auto"></div>
+</div>
+<div class="space-y-4">
+<div class="relative h-[60vh] w-full overflow-hidden group fade-up">
+<img alt="Grand Staircase" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" src="assets/grand_staircase_4k.png"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-700"></div>
+<div class="absolute bottom-8 left-8 right-8 glass-panel p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">The Grand Ascent</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Private Villa, Geneva</p>
+</div>
+</div>
+<div class="relative h-[60vh] w-full overflow-hidden group fade-up">
+<img alt="Kitchen Island" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" src="assets/monolithic_kitchen_4k.png"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-700"></div>
+<div class="absolute bottom-8 left-8 right-8 glass-panel p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Monolithic Core</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Penthouse, Manhattan</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Experience (3D) -->
+<section class="h-[80vh] w-full relative bg-surface-container-lowest overflow-hidden flex flex-col items-center justify-center fade-up">
+    <!-- Video Background -->
+    <div class="absolute inset-0 w-full h-full z-0">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-80" src="assets/logo_reveal.mp4"></video>
+    </div>
+    
+    <div class="absolute inset-0 bg-radial-gradient from-transparent to-background/90 pointer-events-none z-10"></div>
+    <div class="relative z-20 flex flex-col items-center pointer-events-none mt-auto mb-16">
+        <div class="glass-panel p-6 md:p-8 flex flex-col items-center max-w-md text-center border-primary-container/20 shadow-2xl backdrop-blur-md">
+            <span class="material-symbols-outlined text-primary-container text-4xl mb-4">diamond</span>
+            <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-3">Crafted by the Earth</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-6">Experience the raw beauty of natural stone, meticulously crafted and polished to perfection for your timeless spaces.</p>
+            <p class="font-label-caps text-label-caps text-primary-container tracking-[0.3em] font-bold">THE MASTERPIECE</p>
+        </div>
+    </div>
+</section>
+<!-- 7. Contact -->
+<section class="relative py-section-gap px-margin-mobile md:px-margin-desktop min-h-[80vh] flex items-center">
+<!-- STITCH_SHADER_START:ANIMATION_12 class="absolute inset-0 w-full h-full z-0 opacity-40" -->
+<div class="absolute inset-0 w-full h-full z-0 opacity-40" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_12" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_12');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+// Simulates a polished stone surface with light reflections
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 mouse = u_mouse / u_resolution;
+    
+    // Deep dark marble-like base
+    vec3 baseColor = vec3(0.05, 0.05, 0.06);
+    
+    // Polished reflection (follows mouse)
+    float dist = distance(uv, mouse);
+    float highlight = smoothstep(0.3, 0.0, dist);
+    vec3 goldReflect = vec3(0.83, 0.68, 0.21) * highlight * 0.3;
+    
+    // Subtle "veining" noise
+    float noise = fract(sin(dot(uv * 10.0, vec2(12.9898, 78.233))) * 43758.5453);
+    vec3 veinColor = vec3(0.1, 0.1, 0.12);
+    
+    vec3 finalColor = mix(baseColor, veinColor, noise * 0.1);
+    finalColor += goldReflect;
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_12 -->
+<div class="relative z-10 w-full max-w-md mx-auto glass-panel p-8 fade-up">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-8 text-center">Commission a Masterpiece</h2>
+<form class="space-y-8">
+<div class="relative">
+<input class="block w-full bg-transparent border-0 border-b border-surface-variant py-2 px-0 text-on-surface focus:ring-0 focus:border-primary-container peer" id="name" placeholder=" " type="text"/>
+<label class="absolute left-0 top-2 text-on-surface-variant font-label-caps text-label-caps transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary-container peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm" for="name">NAME</label>
+</div>
+<div class="relative">
+<input class="block w-full bg-transparent border-0 border-b border-surface-variant py-2 px-0 text-on-surface focus:ring-0 focus:border-primary-container peer" id="email" placeholder=" " type="email"/>
+<label class="absolute left-0 top-2 text-on-surface-variant font-label-caps text-label-caps transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary-container peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm" for="email">EMAIL INQUIRY</label>
+</div>
+<button class="w-full shimmer-btn bg-on-surface text-background font-label-caps text-label-caps py-4 hover:bg-primary-container transition-colors mt-8" type="button">
+                        REQUEST CONSULTATION
+                    </button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/5 opacity-80 hover:opacity-100 transition-opacity">
+<div class="grid grid-cols-1 md:grid-cols-12 px-margin-mobile md:px-margin-desktop gap-gutter">
+<div class="col-span-1 md:col-span-12 mb-8 text-center md:text-left">
+<div class="flex items-center justify-center mb-6 md:mb-0">
+                        <svg viewBox="0 0 310 100" xmlns="http://www.w3.org/2000/svg" class="h-12 md:h-16 w-auto grayscale brightness-200 opacity-80 hover:grayscale-0 hover:brightness-100 hover:opacity-100 transition-all duration-300">
+                            <path d="M 150 0 L 50 0 A 50 50 0 0 0 50 100 L 155 100 L 155 76 L 150 76 L 150 38 L 50 38 L 50 62 L 126 62 L 126 76 L 50 76 A 26 26 0 0 1 50 24 L 150 24 Z" fill="#ed1c24"/>
+                            <path d="M 160 0 L 260 0 A 50 50 0 0 1 260 100 L 155 100 L 155 76 L 160 76 L 160 38 L 260 38 L 260 62 L 184 62 L 184 76 L 260 76 A 26 26 0 0 0 260 24 L 160 24 Z" fill="#be1e2d"/>
+                        </svg>
+                    </div>
+</div>
+<div class="col-span-1 md:col-span-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant">
+                    © 2024 GG LUXURY STONE. ALL RIGHTS RESERVED.
+                </p>
+<div class="flex gap-6">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Instagram</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">LinkedIn</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Pinterest</a>
+<a class="font-label-caps text-label-caps text-primary dark:text-primary hover:text-primary transition-colors duration-300" href="#">Inquiry</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Intersection Observer for fade-up animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        });
+    </script>
+    <script src="script.js"></script>
+</body></html>
