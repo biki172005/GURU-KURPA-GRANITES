@@ -2,9 +2,13 @@ const canvas = document.getElementById('scroll-animation');
 const context = canvas.getContext('2d');
 
 const frameCount = 300;
-const currentFrame = index => (
-  `frames/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.jpg`
-);
+const isMobile = () => window.innerWidth < 768;
+let mobileMode = isMobile();
+
+const currentFrame = index => {
+  const folder = mobileMode ? 'frames_mobile' : 'frames';
+  return `${folder}/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.jpg`;
+};
 
 const images = [];
 let currentFrameIndex = 0;
@@ -15,6 +19,20 @@ const preloadImages = () => {
     const img = new Image();
     img.src = currentFrame(i);
     images.push(img);
+  }
+};
+
+const checkResponsiveMode = () => {
+  const currentIsMobile = isMobile();
+  if (currentIsMobile !== mobileMode) {
+    mobileMode = currentIsMobile;
+    // Clear images array and preload correct frames
+    images.length = 0;
+    preloadImages();
+    // Re-render current frame
+    if (images[currentFrameIndex]) {
+      renderImage(images[currentFrameIndex]);
+    }
   }
 };
 
@@ -98,6 +116,7 @@ const init = () => {
 
 // Handle window resizing
 window.addEventListener('resize', () => {
+  checkResponsiveMode();
   if (images[currentFrameIndex]) {
     renderImage(images[currentFrameIndex]);
   }
